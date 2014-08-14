@@ -31,8 +31,12 @@ var port = 8711;
 if (args.port) {
     port = args.port;
 }
+var mgmtPort = port + 1;
+if (args.mgmtPort) {
+    mgmtPort = args.mgmtPort;
+}
 
-var server = tally.createServer();
+var server = tally.app;
 server.listen(port, function () {
     log('Listening on port ' + port + '...');
 });
@@ -49,13 +53,16 @@ server.on('flush', function (results) {
     log('flush:\n ' + JSON.stringify(results, null, 2));
 });
 
-// graceful shutdown handlers
-process.on('SIGTERM', function () {
-    server.close();
+var mgmt = tally.mgmt;
+mgmt.listen(mgmtPort, function () {
+    log('Management server listening on port ' + mgmtPort + '...');
 });
-process.on('SIGINT', function () {
-    server.close();
-})
-process.on('exit', function () {
-    server.close();
+mgmt.on('clientConnect', function (clientName) {
+    log(clientName + ' connected.');
+});
+mgmt.on('clientDisconnect', function (clientName) {
+    log(clientName + ' disconnected.');
+});
+mgmt.on('error', function (clientName, error) {
+    log(clientName + ' ERROR: ' + error)
 });
