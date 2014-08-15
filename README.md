@@ -1,10 +1,16 @@
 # tally [![Build Status](https://secure.travis-ci.org/salientio/tally.png?branch=master)](http://travis-ci.org/salientio/tally)
 
-Tally is a simple stats, ratings, and aggregation server similar to
-statsd. Tallyd includes the server for starting things up (tallyd) and a
+Tally is a simple stats, ratings, generic command processing and aggregation server 
+similar to statsd. Tallyd includes the server for starting things up (tallyd) and a
 management server for issuing simple commands to determine the state of
 things. Tallyd also has the ability to flush to listeners. In short, tally 
 is a network daemon that runs in Node.js sent over TCP (instead of UDP).
+
+## Inspiration
+Tallyd was inspired by statsd and has some basic implementation
+differences with relation to aiming for stream reuse, code separation,
+management cli, command line configuration, and generic command
+processing (which can be later used for extensible process handlers).
 
 ## Installation and Configuration
 * Setup node.js (> 0.10.x)
