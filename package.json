@@ -21,7 +21,6 @@
       "url": "https://github.com/salientio/tally/blob/master/LICENSE-MIT"
     }
   ],
-  "main": "lib/tally",
   "engines": {
     "node": ">= 0.8.0"
   },
@@ -37,5 +36,6 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt": "~0.4.5"
   },
-  "keywords": []
+  "keywords": ["statsd","tally","aggregates","counters","ratings","network daemon"],
+  "bin": { "tallyd": "./bin/tallyd", "tally-cli": "./bin/tally-cli" }
 }
