@@ -60,6 +60,11 @@ per second as tracked by **counters**.
 movieid:3|rate
 ```
 
+## tally-cli usage
+tally-cli provides a simple cli that will connect to the management server
+for a given tallyd server. Commands are available via **help**. You should
+be able to see current **ratings**, **info**, **counters**, and **aggregates**.
+
 ## License
 Copyright (c) 2014 Thomas Holloway  
 Licensed under the MIT license.
