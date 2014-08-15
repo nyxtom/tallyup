@@ -44,9 +44,6 @@ client.connect(port, host, function () {
     rl.prompt();
     rl.on('line', function (line) {
         client.write(line.toString());
-        if (!args.mgmt) {
-            rl.prompt();
-        }
     });
 });
 client.on('data', function (data) {
