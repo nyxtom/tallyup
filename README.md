@@ -13,10 +13,15 @@ management cli, command line configuration, and generic command
 processing (which can be later used for extensible process handlers).
 
 ## Installation and Configuration
-* Setup node.js (> 0.10.x)
-* Clone tallyup
-* Start up tallyupd or symlink bin/tallyupd
-* (Command line parameters are available to tallyupd --help)
+
+```
+npm install -g tallyup
+```
+
+Once you've installed via the above command, you should have both
+**tallyupd** and **tallyup-cli** available from your local bin
+environment. Additional usage can be found via **tallyupd --help** or
+**tallyup-cli --help**.
 
 ## Usage
 The basic line protocol is identical to statsd sent via TCP.
