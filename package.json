@@ -1,7 +1,7 @@
 {
   "name": "tallyup",
   "description": "Tallyup is a stats collector with the intent to maintain durability and fault tolerant behavior.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/salientio/tallyup",
   "author": {
     "name": "Thomas Holloway",
