@@ -1,4 +1,4 @@
-# tally [![Build Status](https://secure.travis-ci.org/salientio/tally.png?branch=master)](http://travis-ci.org/salientio/tally)
+# tally
 
 Tally is a simple stats, ratings, generic command processing and aggregation server 
 similar to statsd. Tallyd includes the server for starting things up (tallyd) and a
