@@ -8,6 +8,7 @@
     "email": "nyxtom@gmail.com",
     "url": "https://github.com/nyxtom"
   },
+  "main": "lib/tallyup",
   "repository": {
     "type": "git",
     "url": "git://github.com/salientio/tallyup.git"
