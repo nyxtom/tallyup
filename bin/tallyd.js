@@ -49,9 +49,6 @@ server.on('clientDisconnect', function (clientName) {
 server.on('error', function (clientName, error) {
     log(clientName + ' ERROR: ' + error)
 });
-server.on('flush', function (results) {
-    log('flush:\n ' + JSON.stringify(results, null, 2));
-});
 
 var mgmt = tally.mgmt;
 mgmt.listen(mgmtPort, function () {
