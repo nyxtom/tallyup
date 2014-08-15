@@ -8,11 +8,11 @@ var fs = require('fs'),
     path = require('path');
 
 var args = require('minimist')(process.argv);
-var tally = require('./../');
+var tallyup = require('./../');
 
-// output how to use tallyd
+// output how to use tallyupd
 function usage() {
-    console.log("Usage: tallyd --port=1234");
+    console.log("Usage: tallyupd --port=1234");
     return;
 }
 
@@ -36,7 +36,7 @@ if (args.mgmtPort) {
     mgmtPort = args.mgmtPort;
 }
 
-var server = tally.app;
+var server = tallyup.app;
 server.listen(port, function () {
     log('Listening on port ' + port + '...');
 });
@@ -50,7 +50,7 @@ server.on('error', function (clientName, error) {
     log(clientName + ' ERROR: ' + error)
 });
 
-var mgmt = tally.mgmt;
+var mgmt = tallyup.mgmt;
 mgmt.listen(mgmtPort, function () {
     log('Management server listening on port ' + mgmtPort + '...');
 });

@@ -1,22 +1,22 @@
-# tally
+# tallyup
 
-Tally is a simple stats, ratings, generic command processing and aggregation server 
-similar to statsd. Tallyd includes the server for starting things up (tallyd) and a
+Tallyup is a simple stats, ratings, generic command processing and aggregation server 
+similar to statsd. Tallyup includes the server for starting things up (tallyupd) and a
 management server for issuing simple commands to determine the state of
-things. Tallyd also has the ability to flush to listeners. In short, tally 
+things. Tallyup also has the ability to flush to listeners. In short, tallyup
 is a network daemon that runs in Node.js sent over TCP (instead of UDP).
 
 ## Inspiration
-Tallyd was inspired by statsd and has some basic implementation
+Tallyup was inspired by statsd and has some basic implementation
 differences with relation to aiming for stream reuse, code separation,
 management cli, command line configuration, and generic command
 processing (which can be later used for extensible process handlers).
 
 ## Installation and Configuration
 * Setup node.js (> 0.10.x)
-* Clone tally
-* Start up tallyd or symlink bin/tallyd
-* (Command line parameters are available to tallyd --help)
+* Clone tallyup
+* Start up tallyupd or symlink bin/tallyupd
+* (Command line parameters are available to tallyupd --help)
 
 ## Usage
 The basic line protocol is identical to statsd sent via TCP.
@@ -60,9 +60,9 @@ per second as tracked by **counters**.
 movieid:3|rate
 ```
 
-## tally-cli usage
-tally-cli provides a simple cli that will connect to the management server
-for a given tallyd server. Commands are available via **help**. You should
+## tallyup-cli usage
+tallyup-cli provides a simple cli that will connect to the management server
+for a given tallyupd server. Commands are available via **help**. You should
 be able to see current **ratings**, **info**, **counters**, and **aggregates**.
 
 ## License

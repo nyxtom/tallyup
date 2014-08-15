@@ -1,8 +1,8 @@
 {
-  "name": "tally",
-  "description": "Tally is a stats collector with the intent to maintain durability and fault tolerant behavior.",
+  "name": "tallyup",
+  "description": "Tallyup is a stats collector with the intent to maintain durability and fault tolerant behavior.",
   "version": "0.1.0",
-  "homepage": "https://github.com/salientio/tally",
+  "homepage": "https://github.com/salientio/tallyup",
   "author": {
     "name": "Thomas Holloway",
     "email": "nyxtom@gmail.com",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/salientio/tally.git"
+    "url": "git://github.com/salientio/tallyup.git"
   },
   "bugs": {
-    "url": "https://github.com/salientio/tally/issues"
+    "url": "https://github.com/salientio/tallyup/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/salientio/tally/blob/master/LICENSE-MIT"
+      "url": "https://github.com/salientio/tallyup/blob/master/LICENSE-MIT"
     }
   ],
   "engines": {
@@ -36,6 +36,6 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt": "~0.4.5"
   },
-  "keywords": ["statsd","tally","aggregates","counters","ratings","network daemon"],
-  "bin": { "tallyd": "./bin/tallyd", "tally-cli": "./bin/tally-cli" }
+  "keywords": ["statsd","tallyup","aggregates","counters","ratings","network daemon"],
+  "bin": { "tallyupd": "./bin/tallyupd", "tallyup-cli": "./bin/tallyup-cli" }
 }
