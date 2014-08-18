@@ -1,7 +1,7 @@
 {
   "name": "tallyup",
   "description": "Tallyup is a stats collector with the intent to maintain durability and fault tolerant behavior.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/nyxtom/tallyup",
   "author": {
     "name": "Thomas Holloway",
@@ -29,7 +29,8 @@
     "test": "grunt nodeunit"
   },
   "dependencies": {
-    "minimist": "latest"
+    "minimist": "latest",
+    "dotenv": "latest"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.4",

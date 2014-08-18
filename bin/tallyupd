@@ -5,14 +5,17 @@
  */
 
 var fs = require('fs'),
-    path = require('path');
+    path = require('path'),
+    dotenv = require('dotenv');
 
 var args = require('minimist')(process.argv);
 var tallyup = require('./../');
 
+dotenv.load();
+
 // output how to use tallyupd
 function usage() {
-    console.log("Usage: tallyupd --port=1234");
+    console.log("Usage: tallyupd --port=8711 --mgmt=8712");
     return;
 }
 
@@ -31,12 +34,33 @@ var port = 8711;
 if (args.port) {
     port = args.port;
 }
+// load from the environment if there is one
+if (process.env.TALLYUPD_PORT) {
+    port = process.env.TALLUPD_PORT;
+}
+
 var mgmtPort = port + 1;
 if (args.mgmtPort) {
     mgmtPort = args.mgmtPort;
 }
+// load from the environment if it is there
+if (process.env.TALLYUPD_MGMT_PORT) {
+    mgmtPort = process.env.TALLUPD_MGMT_PORT;
+}
+
+// load listeners from the environment if available
+var listeners = [];
+if (process.env.TALLYUPD_CONSOLE_LISTENER) {
+    listeners.push(tallyup.loadListener('./../lib/listeners/console'));
+}
 
 var server = tallyup.app;
+
+// pipe all listeners for this server to write to
+for (var i = 0; i < listeners.length; i++) {
+    server.pipe(listeners[i]);
+}
+
 server.listen(port, function () {
     log('Listening on port ' + port + '...');
 });
