@@ -1,0 +1,120 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'publish', '.', '-force' ]
+2 info using npm@1.4.14
+3 info using node@v0.10.29
+4 warn using --force I sure hope you know what you are doing.
+5 verbose publish [ '.' ]
+6 verbose cache add [ '.', null ]
+7 verbose cache add name=undefined spec="." args=[".",null]
+8 verbose parsed url { protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: '.',
+8 verbose parsed url   path: '.',
+8 verbose parsed url   href: '.' }
+9 silly lockFile 3a52ce78- .
+10 verbose lock . /Users/nyxtom/.npm/3a52ce78-.lock
+11 verbose tar pack [ '/Users/nyxtom/.npm/tallyup/0.1.2/package.tgz', '.' ]
+12 verbose tarball /Users/nyxtom/.npm/tallyup/0.1.2/package.tgz
+13 verbose folder .
+14 info prepublish tallyup@0.1.2
+15 silly lockFile 1f1177db-tar tar://.
+16 verbose lock tar://. /Users/nyxtom/.npm/1f1177db-tar.lock
+17 silly lockFile 907ab0aa-om-npm-tallyup-0-1-2-package-tgz tar:///Users/nyxtom/.npm/tallyup/0.1.2/package.tgz
+18 verbose lock tar:///Users/nyxtom/.npm/tallyup/0.1.2/package.tgz /Users/nyxtom/.npm/907ab0aa-om-npm-tallyup-0-1-2-package-tgz.lock
+19 silly lockFile 1f1177db-tar tar://.
+20 silly lockFile 1f1177db-tar tar://.
+21 silly lockFile 907ab0aa-om-npm-tallyup-0-1-2-package-tgz tar:///Users/nyxtom/.npm/tallyup/0.1.2/package.tgz
+22 silly lockFile 907ab0aa-om-npm-tallyup-0-1-2-package-tgz tar:///Users/nyxtom/.npm/tallyup/0.1.2/package.tgz
+23 silly lockFile badb2546-nyxtom-npm-tallyup-0-1-2-package /Users/nyxtom/.npm/tallyup/0.1.2/package
+24 verbose lock /Users/nyxtom/.npm/tallyup/0.1.2/package /Users/nyxtom/.npm/badb2546-nyxtom-npm-tallyup-0-1-2-package.lock
+25 silly lockFile badb2546-nyxtom-npm-tallyup-0-1-2-package /Users/nyxtom/.npm/tallyup/0.1.2/package
+26 silly lockFile badb2546-nyxtom-npm-tallyup-0-1-2-package /Users/nyxtom/.npm/tallyup/0.1.2/package
+27 silly lockFile 3a52ce78- .
+28 silly lockFile 3a52ce78- .
+29 silly publish { name: 'tallyup',
+29 silly publish   description: 'Tallyup is a stats collector with the intent to maintain durability and fault tolerant behavior.',
+29 silly publish   version: '0.1.2',
+29 silly publish   homepage: 'https://github.com/nyxtom/tallyup',
+29 silly publish   author:
+29 silly publish    { name: 'Thomas Holloway',
+29 silly publish      email: 'nyxtom@gmail.com',
+29 silly publish      url: 'https://github.com/nyxtom' },
+29 silly publish   main: 'lib/tallyup',
+29 silly publish   repository: { type: 'git', url: 'git://github.com/nyxtom/tallyup.git' },
+29 silly publish   bugs: { url: 'https://github.com/nyxtom/tallyup/issues' },
+29 silly publish   licenses:
+29 silly publish    [ { type: 'MIT',
+29 silly publish        url: 'https://github.com/nyxtom/tallyup/blob/master/LICENSE-MIT' } ],
+29 silly publish   engines: { node: '>= 0.8.0' },
+29 silly publish   scripts: { test: 'grunt nodeunit' },
+29 silly publish   dependencies: { minimist: 'latest', dotenv: 'latest' },
+29 silly publish   devDependencies:
+29 silly publish    { 'grunt-contrib-jshint': '~0.6.4',
+29 silly publish      'grunt-contrib-nodeunit': '~0.2.0',
+29 silly publish      'grunt-contrib-watch': '~0.5.3',
+29 silly publish      grunt: '~0.4.5' },
+29 silly publish   keywords:
+29 silly publish    [ 'statsd',
+29 silly publish      'tallyup',
+29 silly publish      'aggregates',
+29 silly publish      'counters',
+29 silly publish      'ratings',
+29 silly publish      'network daemon' ],
+29 silly publish   bin:
+29 silly publish    { tallyupd: './bin/tallyupd',
+29 silly publish      'tallyup-cli': './bin/tallyup-cli' },
+29 silly publish   readme: 'tallyup\n=======\n\nTallyup is a simple stats, ratings, generic command processing and aggregation server similar to statsd. Tallyup includes the server for starting things up (tallyupd) and a management server for issuing simple commands to determine the state of things. Tallyup also has the ability to flush to listeners. In short, tallyup is a network daemon that runs in Node.js sent over TCP (instead of UDP).\n\nInspiration\n-----------\n\nTallyup was inspired by statsd and has some basic implementation differences with relation to aiming for stream reuse, code separation, management cli, command line configuration, and generic command processing (which can be later used for extensible process handlers).\n\nInstallation and Configuration\n------------------------------\n\n```\nnpm install -g tallyup\n```\n\nOnce you\'ve installed via the above command, you should have both**tallyupd** and **tallyup-cli** available from your local bin environment. Additional usage can be found via **tallyupd --help** or**tallyup-cli --help**.\n\nUsage\n-----\n\nThe basic line protocol is identical to statsd sent via TCP.\n\n```\n<metricname>:<value>|<type>\n```\n\nYou can send a simple metric from command line using something like nc.\n\n```\necho "movie:3|rate" | nc 127.0.0.1 8711\n```\n\nTypes\n-----\n\n### Counting\n\nSimilar to statsd, a counter will add the amount to the bucket. At each flush interval the current count is sent and reset to 0.\n\n```\nrequests:1|incr\n```\n\n### Aggregates\n\nAggregates are automatically calculated for various items. For instance, if you perform the **incr** command type, then a counter is tracked as well as the aggregate sum long term. This allows us to keep track of the rate per second of a given counter, flush counts over time, and store the total amount for a key.\n\n### Ratings\n\nRatings are useful for keeping track of a value that might be within a range of static ratings. For instance, if you are tracking the ratings on products or movies, you can use this type to keep track of the**aggregate** number of ratings supplied to a key, the aggregate average rating, the **aggregate** of all the rating values, as well as the ratings per second as tracked by **counters**.\n\n```\nmovieid:3|rate\n```\n\ntallyup-cli usage\n-----------------\n\ntallyup-cli provides a simple cli that will connect to the management server for a given tallyupd server. Commands are available via **help**. You should be able to see current **ratings**, **info**, **counters**, and **aggregates**.\n\nLicense\n-------\n\nCopyright (c) 2014 Thomas Holloway Licensed under the MIT license.\n',
+29 silly publish   readmeFilename: 'README.md',
+29 silly publish   gitHead: '800d845c5e52435604ade87c0998c66784dc0649',
+29 silly publish   _id: 'tallyup@0.1.2',
+29 silly publish   _shasum: 'fe32e96bc84540f852e29f6bf4ab528e4347ed94',
+29 silly publish   _from: '.' }
+30 verbose url raw tallyup
+31 verbose url resolving [ 'https://registry.npmjs.org/', './tallyup' ]
+32 verbose url resolved https://registry.npmjs.org/tallyup
+33 info trying registry request attempt 1 at 16:45:43
+34 http PUT https://registry.npmjs.org/tallyup
+35 http 403 https://registry.npmjs.org/tallyup
+36 verbose headers { date: 'Mon, 18 Aug 2014 22:45:44 GMT',
+36 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+36 verbose headers   'content-type': 'application/json',
+36 verbose headers   'cache-control': 'max-age=60',
+36 verbose headers   'content-length': '6155',
+36 verbose headers   'accept-ranges': 'bytes',
+36 verbose headers   via: '1.1 varnish',
+36 verbose headers   'x-served-by': 'cache-lax1434-LAX',
+36 verbose headers   'x-cache': 'MISS',
+36 verbose headers   'x-cache-hits': '0',
+36 verbose headers   'x-timer': 'S1408401944.000348,VS0,VE138',
+36 verbose headers   'keep-alive': 'timeout=10, max=50',
+36 verbose headers   connection: 'Keep-Alive' }
+37 error publish Failed PUT 403
+38 error Error: forbidden cannot modify pre-existing version: 0.1.2
+38 error old={"name":"tallyup","description":"Tallyup is a stats collector with the intent to maintain durability and fault tolerant behavior.","version":"0.1.2","homepage":"https://github.com/nyxtom/tallyup","author":{"name":"Thomas Holloway","email":"nyxtom@gmail.com","url":"https://github.com/nyxtom"},"main":"lib/tallyup","repository":{"type":"git","url":"git://github.com/nyxtom/tallyup.git"},"bugs":{"url":"https://github.com/nyxtom/tallyup/issues"},"licenses":[{"type":"MIT","url":"https://github.com/nyxtom/tallyup/blob/master/LICENSE-MIT"}],"engines":{"node":">= 0.8.0"},"scripts":{"test":"grunt nodeunit"},"dependencies":{"minimist":"latest","dotenv":"latest"},"devDependencies":{"grunt-contrib-jshint":"~0.6.4","grunt-contrib-nodeunit":"~0.2.0","grunt-contrib-watch":"~0.5.3","grunt":"~0.4.5"},"keywords":["statsd","tallyup","aggregates","counters","ratings","network daemon"],"bin":{"tallyupd":"./bin/tallyupd","tallyup-cli":"./bin/tallyup-cli"},"gitHead":"8e86b2356163273739337d9993b332664772d531","_id":"tallyup@0.1.2","_shasum":"0b00a04d57b3f15d6377b2ad6417c660596c3265","_from":".","_npmVersion":"1.4.14","_npmUser":{"name":"nyxtom","email":"nyxtom@gmail.com"},"maintainers":[{"name":"nyxtom","email":"nyxtom@gmail.com"}],"dist":{"shasum":"0b00a04d57b3f15d6377b2ad6417c660596c3265","tarball":"http://registry.npmjs.org/tallyup/-/tallyup-0.1.2.tgz"}}
+38 error new={"name":"tallyup","description":"Tallyup is a stats collector with the intent to maintain durability and fault tolerant behavior.","version":"0.1.2","homepage":"https://github.com/nyxtom/tallyup","author":{"name":"Thomas Holloway","email":"nyxtom@gmail.com","url":"https://github.com/nyxtom"},"main":"lib/tallyup","repository":{"type":"git","url":"git://github.com/nyxtom/tallyup.git"},"bugs":{"url":"https://github.com/nyxtom/tallyup/issues"},"licenses":[{"type":"MIT","url":"https://github.com/nyxtom/tallyup/blob/master/LICENSE-MIT"}],"engines":{"node":">= 0.8.0"},"scripts":{"test":"grunt nodeunit"},"dependencies":{"minimist":"latest","dotenv":"latest"},"devDependencies":{"grunt-contrib-jshint":"~0.6.4","grunt-contrib-nodeunit":"~0.2.0","grunt-contrib-watch":"~0.5.3","grunt":"~0.4.5"},"keywords":["statsd","tallyup","aggregates","counters","ratings","network daemon"],"bin":{"tallyupd":"./bin/tallyupd","tallyup-cli":"./bin/tallyup-cli"},"readme":"tallyup\u000a=======\u000a\u000aTallyup is a simple stats, ratings, generic command processing and aggregation server similar to statsd. Tallyup includes the server for starting things up (tallyupd) and a management server for issuing simple commands to determine the state of things. Tallyup also has the ability to flush to listeners. In short, tallyup is a network daemon that runs in Node.js sent over TCP (instead of UDP).\u000a\u000aInspiration\u000a-----------\u000a\u000aTallyup was inspired by statsd and has some basic implementation differences with relation to aiming for stream reuse, code separation, management cli, command line configuration, and generic command processing (which can be later used for extensible process handlers).\u000a\u000aInstallation and Configuration\u000a------------------------------\u000a\u000a```\u000anpm install -g tallyup\u000a```\u000a\u000aOnce you've installed via the above command, you should have both**tallyupd** and **tallyup-cli** available from your local bin environment. Additional usage can be found via **tallyupd --help** or**tallyup-cli --help**.\u000a\u000aUsage\u000a-----\u000a\u000aThe basic line protocol is identical to statsd sent via TCP.\u000a\u000a```\u000a<metricname>:<value>|<type>\u000a```\u000a\u000aYou can send a simple metric from command line using something like nc.\u000a\u000a```\u000aecho \"movie:3|rate\" | nc 127.0.0.1 8711\u000a```\u000a\u000aTypes\u000a-----\u000a\u000a### Counting\u000a\u000aSimilar to statsd, a counter will add the amount to the bucket. At each flush interval the current count is sent and reset to 0.\u000a\u000a```\u000arequests:1|incr\u000a```\u000a\u000a### Aggregates\u000a\u000aAggregates are automatically calculated for various items. For instance, if you perform the **incr** command type, then a counter is tracked as well as the aggregate sum long term. This allows us to keep track of the rate per second of a given counter, flush counts over time, and store the total amount for a key.\u000a\u000a### Ratings\u000a\u000aRatings are useful for keeping track of a value that might be within a range of static ratings. For instance, if you are tracking the ratings on products or movies, you can use this type to keep track of the**aggregate** number of ratings supplied to a key, the aggregate average rating, the **aggregate** of all the rating values, as well as the ratings per second as tracked by **counters**.\u000a\u000a```\u000amovieid:3|rate\u000a```\u000a\u000atallyup-cli usage\u000a-----------------\u000a\u000atallyup-cli provides a simple cli that will connect to the management server for a given tallyupd server. Commands are available via **help**. You should be able to see current **ratings**, **info**, **counters**, and **aggregates**.\u000a\u000aLicense\u000a-------\u000a\u000aCopyright (c) 2014 Thomas Holloway Licensed under the MIT license.\u000a","readmeFilename":"README.md","gitHead":"800d845c5e52435604ade87c0998c66784dc0649","_id":"tallyup@0.1.2","_shasum":"fe32e96bc84540f852e29f6bf4ab528e4347ed94","_from":".","_npmVersion":"1.4.14","_npmUser":{"name":"nyxtom","email":"nyxtom@gmail.com"},"maintainers":[{"name":"nyxtom","email":"nyxtom@gmail.com"}],"dist":{"shasum":"fe32e96bc84540f852e29f6bf4ab528e4347ed94","tarball":"http://registry.npmjs.org/tallyup/-/tallyup-0.1.2.tgz"}}: tallyup
+38 error     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:274:14)
+38 error     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:212:65)
+38 error     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:123:22)
+38 error     at Request.emit (events.js:98:17)
+38 error     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:893:14)
+38 error     at Request.emit (events.js:117:20)
+38 error     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:844:12)
+38 error     at IncomingMessage.emit (events.js:117:20)
+38 error     at _stream_readable.js:929:16
+38 error     at process._tickCallback (node.js:419:13)
+39 error If you need help, you may report this *entire* log,
+39 error including the npm and node versions, at:
+39 error     <http://github.com/npm/npm/issues>
+40 error System Darwin 13.3.0
+41 error command "node" "/usr/local/bin/npm" "publish" "." "-force"
+42 error cwd /Users/nyxtom/nyxtom/tallyup
+43 error node -v v0.10.29
+44 error npm -v 1.4.14
+45 verbose exit [ 1, true ]
