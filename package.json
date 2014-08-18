@@ -2,7 +2,7 @@
   "name": "tallyup",
   "description": "Tallyup is a stats collector with the intent to maintain durability and fault tolerant behavior.",
   "version": "0.1.1",
-  "homepage": "https://github.com/salientio/tallyup",
+  "homepage": "https://github.com/nyxtom/tallyup",
   "author": {
     "name": "Thomas Holloway",
     "email": "nyxtom@gmail.com",
@@ -11,15 +11,15 @@
   "main": "lib/tallyup",
   "repository": {
     "type": "git",
-    "url": "git://github.com/salientio/tallyup.git"
+    "url": "git://github.com/nyxtom/tallyup.git"
   },
   "bugs": {
-    "url": "https://github.com/salientio/tallyup/issues"
+    "url": "https://github.com/nyxtom/tallyup/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/salientio/tallyup/blob/master/LICENSE-MIT"
+      "url": "https://github.com/nyxtom/tallyup/blob/master/LICENSE-MIT"
     }
   ],
   "engines": {
